@@ -57,4 +57,25 @@ RSpec.describe do
       expect(@park.passengers).to eq([@charlie, @jude, @taylor, @sam, @billy])
     end
   end
+
+  describe '#all_attendees' do
+    it 'returns an array of passenger names' do
+
+      expect(@park.all_attendees).to eq(["Charlie", "Jude", "Taylor", "Sam", "Billy"])
+    end
+  end
+
+  describe '#minors' do
+    it 'returns an array of all the names of those under 18 in the park' do
+
+      expect(@park.minors).to eq(["Taylor", "Billy"])
+    end
+  end
+
+  describe '#adults' do
+    it 'returns an array of all the names of those over 17 in the park' do
+
+      expect(@park.adults).to eq(["Charlie", "Jude", "Sam"])
+    end
+  end
 end
