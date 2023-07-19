@@ -4,7 +4,7 @@ require './lib/park'
 
 RSpec.describe do
   before(:each) do
-    @park = Park,new("Yellowstone", 100)
+    @park = Park.new("Yellowstone", 100)
     @vehicle1 = Vehicle.new("2001", "Honda", "Civic")
     @vehicle2 = Vehicle.new("2021", "Tesla", "Model 3")
     @charlie = Passenger.new({"name" => "Charlie", "age" => 18})
@@ -28,7 +28,7 @@ RSpec.describe do
     it 'has readable attributes' do
 
       expect(@park.name).to eq("Yellowstone")
-      expect(@park.admission_price).to eq(100)
+      expect(@park.admission).to eq(100)
       expect(@park.vehicles).to eq([])
       expect(@park.revenue).to eq(0)
     end
@@ -39,7 +39,7 @@ RSpec.describe do
       @park.add_vehicle(@vehicle1)
       @park.add_vehicle(@vehicle2)
     
-      expect(@park.vehicles).to eq([@vehicle2, @vehicle2])
+      expect(@park.vehicles).to eq([@vehicle1, @vehicle2])
     end
 
     it 'collects the price of admission for each adult in a vehicle' do
@@ -54,7 +54,6 @@ RSpec.describe do
     it 'can identify all passengers that are in the park' do
       @park.add_vehicle(@vehicle1)
       @park.add_vehicle(@vehicle2)
-
       expect(@park.passengers).to eq([@charlie, @jude, @taylor, @sam, @billy])
     end
   end
