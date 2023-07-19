@@ -54,12 +54,15 @@ RSpec.describe do
     it 'can identify all passengers that are in the park' do
       @park.add_vehicle(@vehicle1)
       @park.add_vehicle(@vehicle2)
+
       expect(@park.passengers).to eq([@charlie, @jude, @taylor, @sam, @billy])
     end
   end
 
   describe '#all_attendees' do
     it 'returns an array of passenger names' do
+      @park.add_vehicle(@vehicle1)
+      @park.add_vehicle(@vehicle2)
 
       expect(@park.all_attendees).to eq(["Charlie", "Jude", "Taylor", "Sam", "Billy"])
     end
@@ -67,6 +70,8 @@ RSpec.describe do
 
   describe '#minors' do
     it 'returns an array of all the names of those under 18 in the park' do
+      @park.add_vehicle(@vehicle1)
+      @park.add_vehicle(@vehicle2)
 
       expect(@park.minors).to eq(["Taylor", "Billy"])
     end
@@ -74,6 +79,8 @@ RSpec.describe do
 
   describe '#adults' do
     it 'returns an array of all the names of those over 17 in the park' do
+      @park.add_vehicle(@vehicle1)
+      @park.add_vehicle(@vehicle2)
 
       expect(@park.adults).to eq(["Charlie", "Jude", "Sam"])
     end
